@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+
+<h3>Browse Genres</h3>
+<p>Select from @Model.NumberOfGenres genres</p>
+<ul>
+    @foreach (string genreName in @Model.Genres)
+    {
+        <li>
+            @Html.ActionLink(genreName, "Browse", new { genre= genreName }, null)
+            @if (ViewBag.Starred.Contains(genreName))
+            {
+                <img style="width: 20px; height: 20px;" src="~/Content/Images/star.jpg"/>
+            }
+        </li>
+    }
+</ul>
+<br />
+<h5> <img style="width: 20px; height: 20px;" src="~/Content/Images/star.jpg" alt="Starred element" /> Starred genres 20% Off! 
